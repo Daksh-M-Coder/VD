@@ -14,12 +14,12 @@
     <form id="downloadForm">
         <label for="video_url">Enter YouTube video URL:</label>
         <input type="text" id="video_url" name="video_url" required>
-        <button type="submit">Download</button>
+        <button type="button" onclick="downloadVideo()">Download</button>
     </form>
     <script>
-        document.getElementById("downloadForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            const videoUrl = document.getElementById("video_url").value;
+        function downloadVideo() {
+            var videoUrl = document.getElementById("video_url").value;
+
             fetch("/api/download", {
                 method: "POST",
                 headers: {
@@ -37,7 +37,7 @@
                     console.error("Error:", error);
                     alert("An unexpected error occurred.");
                 });
-        });
+        }
     </script>
 </body>
 
